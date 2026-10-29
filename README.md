@@ -56,12 +56,13 @@ and a subset of 20 flights with complete geometry is released here.
 | Released flights | 20 | 20 |
 | Track points released | 6 277 | 8 202 |
 | Median distance, released flights | 0.69 – 0.98 m | 0.65 – 1.05 m |
-| Median distance, all valid routes | 1.94 m | 1.84 m |
+| Median distance, all non-fallback routes | 1.86 m | 1.85 m |
 | Distance ECDF, P50 / P90 / ≤3 m | 0.91 m / 2.33 m / 94.4 % | 0.98 m / 2.72 m / 92.4 % |
 
 The released flights are the ones whose geometry is complete; they are **not** a random sample.
-`data/<AIRPORT>/all_runs.json` holds the score of every run that returned a route, which is the
-unbiased distribution to quote.
+`data/<AIRPORT>/all_runs.json` holds the score of every run that returned a route (433 / 273
+rows), which is the unbiased distribution to quote: its median is 1.86 m / 1.85 m, about twice
+the released subset.
 
 Per-flight metrics: `data/KDCA/metrics.csv`, `data/KLAX/metrics.csv`.
 
