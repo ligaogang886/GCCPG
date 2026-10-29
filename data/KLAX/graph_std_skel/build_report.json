@@ -1,0 +1,65 @@
+{
+ "osm": "KLAX_std_healed.osm",
+ "ap": "KLAX",
+ "out": "KLAX/graph_std_skel",
+ "classes": [
+  "runway",
+  "stopway",
+  "taxilane",
+  "taxiway"
+ ],
+ "turn_thr": 5.0,
+ "n_paths": 989,
+ "n_N": 614,
+ "n_R": 375,
+ "R_ratio": 37.9,
+ "total_len_m": 91289.4,
+ "n_endpoints": 652,
+ "n_points": 5761,
+ "n_points_1m": 92278,
+ "adjacency_edges": 2188,
+ "path_components": 1,
+ "main_share_pct": 100.0,
+ "component_sizes": [
+  989
+ ],
+ "endpoint_degree": {
+  "min": 1,
+  "max": 6,
+  "mean": 3.03
+ },
+ "len_per_path": {
+  "mean": 92.3,
+  "median": 58.0,
+  "max": 1364.8
+ },
+ "transform": {
+  "coef": [
+   [
+    596.4607471692261,
+    -1892.2249758000105
+   ],
+   [
+    -0.00019729873423690591,
+    1.0010406626970516
+   ],
+   [
+    1.0034763138305367,
+    0.0002534086730117348
+   ]
+  ],
+  "lat0": 33.94168091252313,
+  "lon0": -118.4011442940998,
+  "m_lon": 92351.77589194011,
+  "n_pts": 59163,
+  "res_mean": 0.2373446374816156,
+  "res_p99": 0.46235861230708913,
+  "res_max": 0.6591239648749977
+ },
+ "by_class": {
+  "runway": 91,
+  "stopway": 7,
+  "taxilane": 26,
+  "taxiway": 865
+ }
+}

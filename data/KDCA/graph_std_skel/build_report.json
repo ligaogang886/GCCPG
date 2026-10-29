@@ -1,0 +1,67 @@
+{
+ "osm": "KDCA_std_healed.osm",
+ "ap": "KDCA",
+ "out": "KDCA/graph_std_skel",
+ "classes": [
+  "runway",
+  "stopway",
+  "taxilane",
+  "taxiway"
+ ],
+ "turn_thr": 5.0,
+ "n_paths": 369,
+ "n_N": 269,
+ "n_R": 100,
+ "R_ratio": 27.1,
+ "total_len_m": 23749.0,
+ "n_endpoints": 250,
+ "n_points": 4395,
+ "n_points_1m": 24124,
+ "adjacency_edges": 792,
+ "path_components": 3,
+ "main_share_pct": 98.22,
+ "component_sizes": [
+  367,
+  1,
+  1
+ ],
+ "endpoint_degree": {
+  "min": 1,
+  "max": 5,
+  "mean": 2.95
+ },
+ "len_per_path": {
+  "mean": 64.4,
+  "median": 40.1,
+  "max": 613.8
+ },
+ "transform": {
+  "coef": [
+   [
+    -218.22097656085992,
+    -255.55396151912487
+   ],
+   [
+    -2.334630127563686e-05,
+    1.0012504579637769
+   ],
+   [
+    1.0042776576510823,
+    2.430563523999105e-05
+   ]
+  ],
+  "lat0": 38.850081228271485,
+  "lon0": -77.03923095449218,
+  "m_lon": 86694.89878902535,
+  "n_pts": 78125,
+  "res_mean": 0.21117500318067028,
+  "res_p99": 0.37023269948595966,
+  "res_max": 0.41238833762901755
+ },
+ "by_class": {
+  "runway": 46,
+  "stopway": 12,
+  "taxilane": 14,
+  "taxiway": 297
+ }
+}
