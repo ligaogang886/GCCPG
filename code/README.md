@@ -9,14 +9,15 @@ code/
 └─ scripts/    verify_dataset.py, plot_from_dataset.py (self-contained, run from the repo root)
 ```
 
-All modules resolve the dataset root as
+All modules resolve paths relative to their own location, so nothing depends on the working
+directory. Four environment variables override the defaults:
 
-```python
-ROOT = os.environ.get("ROUTE_ID_ROOT") or <repository root>
-```
-
-so nothing depends on the working directory. Set `ROUTE_ID_ROOT` only if the data lives
-elsewhere.
+| variable | default | used by |
+|---|---|---|
+| `ROUTE_ID_ROOT` | repository root | data root for `analysis`, `viewer`, `scripts`, `pipeline` |
+| `ROUTE_ID_ALGO` | `code/core` | `pipeline/run_amelia*.py` (path inserted for `import main`) |
+| `AMELIA_GRAPH_ROOT` | — (required) | `pipeline/build_paths_amelia.py`, points at Amelia-10 `graph_data_a10v01os` |
+| `AMELIA_TRAJ_ROOT` | — (required) | `pipeline/prep_traj_amelia.py`, points at Amelia-10 `raw_trajectories` |
 
 ## core — the algorithm
 

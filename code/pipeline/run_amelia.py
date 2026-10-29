@@ -27,11 +27,13 @@ import argparse
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ALGO = r"E:\科研2026\轨迹路线识别\算法部分\算法核心代码"
+ALGO = os.environ.get("ROUTE_ID_ALGO") or os.path.normpath(
+    os.path.join(HERE, "..", "core"))
 sys.path.insert(0, ALGO)
 sys.path.insert(0, HERE)
 
-OUT_ROOT_DEFAULT = r"E:\科研2026\轨迹路线识别\返修实验\R1-4"
+OUT_ROOT_DEFAULT = os.environ.get("ROUTE_ID_ROOT") or os.path.normpath(
+    os.path.join(HERE, "..", ".."))
 
 
 # ============================================================

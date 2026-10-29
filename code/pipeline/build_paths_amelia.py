@@ -23,6 +23,10 @@ Amelia 特有的两处适配（原脚本不需要、这里必须补）：
   build_report.json        构建统计
 """
 import os
+
+_REPO = os.environ.get("ROUTE_ID_ROOT") or os.path.normpath(
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+
 import sys
 import json
 import math
@@ -679,8 +683,9 @@ def build(ap, pkl_path, out_dir, r_min=None, win=None, min_r_len=None, turn_thr=
 if __name__ == "__main__":
     ap_ = argparse.ArgumentParser()
     ap_.add_argument("airport")
-    ap_.add_argument("--root", default=r"E:\科研2026\数据\Amelia-10\data\graph_data_a10v01os")
-    ap_.add_argument("--out", default=r"E:\科研2026\轨迹路线识别\返修实验\R1-4")
+    ap_.add_argument("--root", default=os.environ.get("AMELIA_GRAPH_ROOT", ""),
+                     help="Amelia-10 graph_data_a10v01os directory (or AMELIA_GRAPH_ROOT)")
+    ap_.add_argument("--out", default=_REPO)
     ap_.add_argument("--subdir", default="graph",
                      help="输出子目录名，默认 graph；无圆角对照用 graph_nofillet")
     ap_.add_argument("--r-min", type=float, default=None, help="曲率速率阈值 deg/m")
@@ -690,6 +695,8 @@ if __name__ == "__main__":
     ap_.add_argument("--fillet-d", type=float, default=None)
     ap_.add_argument("--fillet-len", type=float, default=None)
     a = ap_.parse_args()
+    if not a.root:
+        ap_.error("--root is required: point it at the Amelia-10 graph directory or set AMELIA_GRAPH_ROOT")
     r = build(a.airport, os.path.join(a.root, a.airport, "semantic_graph.pkl"),
               os.path.join(a.out, a.airport.upper(), a.subdir),
               r_min=a.r_min, turn_thr=a.turn_thr,

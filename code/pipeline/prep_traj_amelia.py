@@ -18,6 +18,10 @@ Amelia 轨迹清洗 + 转西安式轨迹 JSON（每场 500 条：进/离场各 2
 运行器再把 convert_coordinates 打补丁成恒等映射（见 run_amelia.py）。
 """
 import os
+
+_REPO = os.environ.get("ROUTE_ID_ROOT") or os.path.normpath(
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+
 import sys
 import json
 import math
@@ -189,8 +193,9 @@ def nearest_path(r, net, runway=False):
 def main():
     ap_ = argparse.ArgumentParser()
     ap_.add_argument("airport")
-    ap_.add_argument("--traj-root", default=r"E:\科研2026\数据\Amelia-10\data\traj_data_a10v08\raw_trajectories")
-    ap_.add_argument("--out", default=r"E:\科研2026\轨迹路线识别\返修实验\R1-4")
+    ap_.add_argument("--traj-root", default=os.environ.get("AMELIA_TRAJ_ROOT", ""),
+                     help="Amelia-10 raw_trajectories directory (or set AMELIA_TRAJ_ROOT)")
+    ap_.add_argument("--out", default=_REPO)
     ap_.add_argument("--n-per-class", type=int, default=250)
     ap_.add_argument("--max-files", type=int, default=None)
     ap_.add_argument("--export", action="store_true", help="抽样并导出 JSON")
@@ -201,6 +206,8 @@ def main():
                      help="用哪套路网做离网裁剪/跑道锚定（默认 graph_nofillet，"
                           "与 KDCA/KJFK 清洗口径一致）")
     a = ap_.parse_args()
+    if not a.traj_root:
+        ap_.error("--traj-root is required: point it at the Amelia-10 raw_trajectories directory or set AMELIA_TRAJ_ROOT")
 
     ap = a.airport.lower()
     AP = a.airport.upper()
