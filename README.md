@@ -81,7 +81,8 @@ python code/scripts/plot_from_dataset.py --airport both --out ecdf.png
 
 # 3. re-run the algorithm on the released flights of one airport
 cd code/pipeline
-python run_amelia_par.py KDCA --out-root ../../data --graph-subdir graph_std_skel --workers 4
+python run_amelia_par.py KDCA --out-root ../../data --graph-subdir graph_std_skel \
+       --tag rerun --workers 4
 ```
 
 Step 1 prints, per airport, the number of flights, points and graph segments, plus the largest

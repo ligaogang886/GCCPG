@@ -68,7 +68,7 @@ which is exactly the layout under `data/`, so the released flights can be re-run
 ```bash
 cd code/pipeline
 python run_amelia_par.py KDCA --out-root ../../data --graph-subdir graph_std_skel \
-       --tids ../../data/KDCA/tids.txt --workers 4
+       --tids ../../data/KDCA/tids.txt --tag rerun --workers 4
 ```
 
 The three patched points, in short: the dataset already ships metric coordinates (no affine
